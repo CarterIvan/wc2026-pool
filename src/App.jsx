@@ -90,27 +90,37 @@ function App() {
         minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        background:
+  'linear-gradient(135deg, #1a2980 0%, #26d0ce 100%)',
+        
       }}
     >
       <div
         style={{
           width: '300px',
           textAlign: 'center'
+          
         }}
       >
 <div
   style={{
     fontSize: '60px',
     textAlign: 'center',
-    marginBottom: '10px'
+    marginBottom: '10px',
   }}
 >
   🏆
 </div>
 
 
-        <h1>WC2026  </h1>
+       <h1
+  style={{
+    color: 'white'
+  }}
+>
+  WC2026
+</h1>
         
 
         <input
