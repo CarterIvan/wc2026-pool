@@ -265,7 +265,9 @@ async function calculatePoints(matchId) {
         >
           <h3>ADMIN PANEL</h3>
 
-          {matches.map(match => (
+         {matches
+  .filter(match => !match.finished)
+  .map(match => (
             <div
               key={match.id}
               style={{
@@ -421,7 +423,9 @@ if (!matchStarted)
             Zapasy
           </h2>
 
-          {matches.map(match => (
+          {matches
+  .filter(match => !match.finished)
+  .map(match => (
             <div
               key={match.id}
               style={{
