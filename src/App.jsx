@@ -7,6 +7,8 @@ function App() {
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
   const [player, setPlayer] = useState(null)
+  
+
 
   useEffect(() => {
     const savedPlayer = localStorage.getItem('wc2026_player')
@@ -131,7 +133,8 @@ function App() {
           }
           style={{
             width: '100%',
-            padding: '10px'
+            padding: '10px',
+            fontSize: '16px'
           }}
         />
 
@@ -149,7 +152,8 @@ function App() {
           }
           style={{
             width: '100%',
-            padding: '10px'
+            padding: '10px',
+            fontSize: '16px'
           }}
         />
 
