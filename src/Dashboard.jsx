@@ -10,6 +10,7 @@ function Dashboard({ player, logout }) {
   const [adminScores, setAdminScores] = useState({})
   const [visibleFinished, setVisibleFinished] =
   useState(5)
+  const [visibleHistoryPredictions, setVisibleHistoryPredictions] = useState(5)
 
   useEffect(() => {
     loadData()
@@ -366,11 +367,13 @@ async function calculatePoints(matchId) {
   >
     Predikcie
   </h3>
+  
 
           {matches.map(match => {
             const matchStarted =
   new Date() >=
   new Date(match.kickoff_time)
+  const isFinished = match.finished
 
 if (!matchStarted)
   return null
@@ -564,8 +567,9 @@ if (!matchStarted)
         >
           <h2>Ukoncene zapasy</h2>
 
-          {matches
+          {[...matches]
   .filter(m => m.finished)
+  .reverse()
   .slice(0, visibleFinished)
   .map(match => {
               const myTip =
