@@ -45,7 +45,7 @@ function App() {
 
     if (error || !data) {
       setMessage(
-        'Pogrešno ime ili lozinka'
+        'Zle heslo Crnec'
       )
       return
     }

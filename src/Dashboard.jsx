@@ -11,6 +11,7 @@ function Dashboard({ player, logout }) {
   const [visibleFinished, setVisibleFinished] =
   useState(5)
   const [visibleHistoryPredictions, setVisibleHistoryPredictions] = useState(5)
+  const [openedHistoryMatch, setOpenedHistoryMatch] = useState(null)
 
   useEffect(() => {
     loadData()
@@ -367,7 +368,83 @@ async function calculatePoints(matchId) {
   >
     Predikcie
   </h3>
-  
+  <h3
+  style={{
+    textAlign: 'center',
+    color: '#b8860b',
+    marginTop: '30px'
+  }}
+>
+  História
+</h3>
+{matches
+  .filter(m => m.finished)
+  .reverse()
+  .slice(0, visibleHistoryPredictions)
+  .map(match => (
+    <div
+      key={match.id}
+      style={{
+        border: '1px solid #ccc',
+        padding: '10px',
+        marginBottom: '10px'
+      }}
+    >
+      <div
+  onClick={() =>
+    setOpenedHistoryMatch(
+      openedHistoryMatch === match.id
+        ? null
+        : match.id
+    )
+  }
+ style={{
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  fontSize: '10px'
+}}
+>
+  {openedHistoryMatch === match.id ? '▼' : '▶'}{' '}
+  {match.home_team} - {match.away_team}
+</div>
+
+
+      {openedHistoryMatch === match.id && (
+  <>
+    {predictions
+      .filter(p => p.match_id === match.id)
+      .map(p => {
+          const pl = players.find(
+            x => x.id === p.player_id
+          )
+
+          return (
+            <div key={p.id}>
+              {pl?.name}: {p.predicted_home}:{p.predicted_away}
+            </div>
+                 )
+        })}
+  </>
+)}
+    </div>
+  ))}
+  {matches.filter(m => m.finished).length > visibleHistoryPredictions && (
+  <div style={{ textAlign: 'center', marginTop: '10px' }}>
+    <button
+      onClick={() =>
+        setVisibleHistoryPredictions(
+          visibleHistoryPredictions + 5
+        )
+      }
+      style={{
+        padding: '8px 15px',
+        cursor: 'pointer'
+      }}
+    >
+      Zobraziť ďalších 5
+    </button>
+  </div>
+)}
 
           {matches.map(match => {
             const matchStarted =
@@ -375,7 +452,7 @@ async function calculatePoints(matchId) {
   new Date(match.kickoff_time)
   const isFinished = match.finished
 
-if (!matchStarted)
+if (!matchStarted || isFinished)
   return null
 
             return (
@@ -511,6 +588,16 @@ if (!matchStarted)
                         match.id
                       )
                     }
+                      style={{
+    backgroundColor: '#b8860b',
+    color: 'white',
+    border: 'none',
+    borderRadius: '8px',
+    padding: '10px 18px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+  }}
                   >
                     Ulozit
                   </button>
