@@ -615,13 +615,28 @@ if (!matchStarted || isFinished)
   }}
 >
   <h3
+  style={{
+    textAlign: 'center',
+    color: '#1565c0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px'
+  }}
+>
+  <span
     style={{
-      textAlign: 'center',
-      color: '#1565c0'
+      width: '10px',
+      height: '10px',
+      backgroundColor: '#ff3b30',
+      borderRadius: '50%',
+      display: 'inline-block',
+      animation: 'pulse 1.5s infinite'
     }}
-  >
-    LIVE Tabulka
-  </h3>
+  ></span>
+
+  LIVE Tabulka
+</h3>
 
           {players.map((p, index) => (
             <div
