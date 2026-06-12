@@ -167,6 +167,19 @@ function App() {
         </button>
 
         <p>{message}</p>
+        <div
+  style={{
+    position: 'fixed',
+    bottom: '15px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    color: 'rgba(255,255,255,0.6)',
+    fontSize: '11px',
+    letterSpacing: '1px'
+  }}
+>
+  CREATED BY IVAN PONICAN
+</div>
       </div>
     </div>
   )
