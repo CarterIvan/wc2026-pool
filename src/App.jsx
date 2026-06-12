@@ -99,10 +99,22 @@ function App() {
           textAlign: 'center'
         }}
       >
-        <h1>WC2026 Login</h1>
+<div
+  style={{
+    fontSize: '60px',
+    textAlign: 'center',
+    marginBottom: '10px'
+  }}
+>
+  🏆
+</div>
+
+
+        <h1>WC2026  </h1>
+        
 
         <input
-          placeholder="Ime"
+          placeholder="Meno"
           value={name}
           onChange={e =>
             setName(e.target.value)
@@ -117,7 +129,7 @@ function App() {
         <br />
 
         <input
-          placeholder="Lozinka"
+          placeholder="Heslo"
           type="password"
           value={password}
           onChange={e =>
