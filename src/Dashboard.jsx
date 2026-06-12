@@ -8,6 +8,8 @@ function Dashboard({ player, logout }) {
   const [myPredictions, setMyPredictions] = useState({})
   const [newTips, setNewTips] = useState({})
   const [adminScores, setAdminScores] = useState({})
+  const [visibleFinished, setVisibleFinished] =
+  useState(5)
 
   useEffect(() => {
     loadData()
@@ -563,8 +565,9 @@ if (!matchStarted)
           <h2>Ukoncene zapasy</h2>
 
           {matches
-            .filter(m => m.finished)
-            .map(match => {
+  .filter(m => m.finished)
+  .slice(0, visibleFinished)
+  .map(match => {
               const myTip =
                 myPredictions[match.id]
 
@@ -615,7 +618,20 @@ if (!matchStarted)
               )
             })}
         </div>
-
+{matches.filter(m => m.finished).length > visibleFinished && (
+  <div style={{ textAlign: 'center', marginTop: '20px' }}>
+    <button
+      onClick={() => setVisibleFinished(visibleFinished + 5)}
+      style={{
+        padding: '10px 20px',
+        cursor: 'pointer',
+        borderRadius: '8px'
+      }}
+    >
+      Prikaži još 5
+    </button>
+  </div>
+)}
     </div>
   )
 }
