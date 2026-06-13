@@ -13,6 +13,8 @@ function Dashboard({ player, logout }) {
   const [visibleHistoryPredictions, setVisibleHistoryPredictions] = useState(5)
   const [openedHistoryMatch, setOpenedHistoryMatch] = useState(null)
   const [editingMatch, setEditingMatch] = useState(null)
+  const [lastMatchPoints, setLastMatchPoints] = useState([])
+const [lastMatchName, setLastMatchName] = useState('')
 
   useEffect(() => {
     loadData()
@@ -45,11 +47,32 @@ function Dashboard({ player, logout }) {
       .from('predictions')
       .select('*')
 
-    setMatches(matchesData || [])
-    setPlayers(playersData || [])
-    setPredictions(predictionsData || [])
+  setMatches(matchesData || [])
+setPlayers(playersData || [])
+setPredictions(predictionsData || [])
 
-    const mine = {}
+const finishedMatches = (matchesData || [])
+  .filter(m => m.finished)
+  .sort(
+    (a, b) =>
+      new Date(b.kickoff_time) -
+      new Date(a.kickoff_time)
+  )
+
+if (finishedMatches.length > 0) {
+  const lastMatch = finishedMatches[0]
+
+  setLastMatchName(
+    `${lastMatch.home_team} - ${lastMatch.away_team}`
+  )
+
+  const pointsForMatch = (predictionsData || [])
+    .filter(p => p.match_id === lastMatch.id)
+
+  setLastMatchPoints(pointsForMatch)
+}
+
+const mine = {}
 
     ;(predictionsData || []).forEach(p => {
       if (p.player_id === player.id) {
@@ -757,14 +780,69 @@ Upraviť(1)
     </>
   </div>
 ))}
-        </div>
-      </div>
-       <div
+<div
+  style={{
+    marginTop: '20px',
+    background: 'white',
+    borderRadius: '8px',
+    padding: '12px',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.08)'
+  }}
+>
+  <div
+    style={{
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: '8px'
+    }}
+  >
+    🏆 Posledný zápas
+  </div>
+
+  <div
+    style={{
+      textAlign: 'center',
+      fontSize: '12px',
+      marginBottom: '10px'
+    }}
+  >
+    {lastMatchName}
+  </div>
+
+  {lastMatchPoints
+    .sort((a, b) => b.points - a.points)
+    .map(p => {
+      const pl = players.find(
+        x => x.id === p.player_id
+      )
+
+      return (
+        <div
+          key={p.id}
           style={{
-            marginTop: '50px'
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: '4px'
           }}
         >
-          <h2>Ukoncene zapasy</h2>
+          <span>{pl?.name}</span>
+          <span>+{p.points}</span>
+        </div>
+      )
+    })}
+</div>
+</div>
+
+
+
+</div>
+
+<div
+  style={{
+    marginTop: '50px'
+  }}
+>
+  <h2>Ukoncene zapasy</h2>
 
           {[...matches]
   .filter(m => m.finished)
