@@ -686,8 +686,10 @@ if (!matchStarted || isFinished)
                    border: `2px solid ${
   !match.finished
     ? 'orange'
-    : myTip.points > 0
+    : myTip.points === 3
     ? 'green'
+    : myTip.points === 1
+    ? '#d4a017'
     : 'red'
 }`,
                     padding: '15px',
@@ -695,8 +697,10 @@ if (!matchStarted || isFinished)
                     background:
   !match.finished
     ? '#fff8d6'
-    : myTip.points > 0
+    : myTip.points === 3
     ? '#e8ffe8'
+    : myTip.points === 1
+    ? '#fff4cc'
     : '#ffe8e8'
                   }}
                 >
