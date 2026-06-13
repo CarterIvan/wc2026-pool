@@ -12,6 +12,7 @@ function Dashboard({ player, logout }) {
   useState(5)
   const [visibleHistoryPredictions, setVisibleHistoryPredictions] = useState(5)
   const [openedHistoryMatch, setOpenedHistoryMatch] = useState(null)
+  const [editingMatch, setEditingMatch] = useState(null)
 
   useEffect(() => {
     loadData()
@@ -185,28 +186,48 @@ async function calculatePoints(matchId) {
 
   loadData()
 }
-  async function saveTip(matchId) {
-    const tip = newTips[matchId]
+ async function saveTip(matchId) {
+  const tip = newTips[matchId]
+  const existingPrediction = myPredictions[matchId]
+  const match = matches.find(m => m.id === matchId)
 
-    if (
-      !tip ||
-      tip.home === undefined ||
-      tip.away === undefined
-    ) {
-      alert('Unesi oba rezultata')
+if (new Date() >= new Date(match.kickoff_time)) {
+  alert('Zapas sa uz hra')
+  return
+}
+
+  if (existingPrediction && !existingPrediction.edit_used) {
+    const { error } = await supabase
+      .from('predictions')
+      .update({
+        predicted_home: Number(tip.home),
+        predicted_away: Number(tip.away),
+        edit_used: true
+      })
+      .eq('id', existingPrediction.id)
+
+    if (error) {
+      console.log(error)
+      alert('Greška')
       return
     }
+
+    setEditingMatch(null)
+    loadData()
+    return
+  }
 
     const { error } = await supabase
       .from('predictions')
       .insert({
-        player_id: player.id,
-        match_id: matchId,
-        predicted_home: Number(tip.home),
-        predicted_away: Number(tip.away),
-        points: 0,
-        locked: true
-      })
+  player_id: player.id,
+  match_id: matchId,
+  predicted_home: Number(tip.home),
+  predicted_away: Number(tip.away),
+  points: 0,
+  locked: true,
+  edit_used: false
+})
 
     if (error) {
       console.log(error)
@@ -572,9 +593,7 @@ if (true)
                 ).toLocaleString()}
               </p>
 
-              {myPredictions[
-                match.id
-              ] ? (
+              {myPredictions[match.id] && editingMatch !== match.id ? (
                 <div>
                   <b>
                     Tvoj tip:{' '}
@@ -592,6 +611,30 @@ if (true)
                         .predicted_away
                     }
                   </b>
+                  <br />
+
+{
+ !myPredictions[match.id].edit_used &&
+ new Date() < new Date(match.kickoff_time) && (
+  <button
+  onClick={() => setEditingMatch(match.id)}
+  style={{
+    marginTop: '10px',
+    padding: '8px 16px',
+    cursor: 'pointer',
+    background: '#2196f3',
+    color: 'white',
+    border: 'none',
+    borderRadius: '6px',
+    fontWeight: 'bold',
+    fontSize: '14px',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+  }}
+>
+  ✏️ 
+Upraviť(1) 
+</button>
+)}
                 </div>
               ) : (
                 <>
