@@ -794,21 +794,57 @@ Upraviť(1)
                     {match.away_team}
                   </h3>
 
-                  <p>
-                    Vysledok:{' '}
-                    {match.home_score}:
-                    {match.away_score}
-                  </p>
+                  <div style={{ marginTop: '15px' }}>
+  <div
+    style={{
+      fontSize: '12px',
+      textTransform: 'uppercase',
+      opacity: 0.7
+    }}
+  >
+    ⚽ Výsledok
+  </div>
 
-                  <p>
-                    Tvoj tip:{' '}
-                    {myTip.predicted_home}:
-                    {myTip.predicted_away}
-                  </p>
+  <div
+    style={{
+      fontSize: '24px',
+      fontWeight: 'bold',
+      marginBottom: '10px'
+    }}
+  >
+    {match.home_score} : {match.away_score}
+  </div>
 
-                  <p>
-                    Body: {myTip.points}
-                  </p>
+  <div
+    style={{
+      fontSize: '12px',
+      textTransform: 'uppercase',
+      opacity: 0.7
+    }}
+  >
+    🎯 Tvoj tip
+  </div>
+
+  <div
+    style={{
+      fontSize: '22px',
+      fontWeight: 'bold',
+      marginBottom: '10px'
+    }}
+  >
+    {myTip.predicted_home} : {myTip.predicted_away}
+  </div>
+
+  <div
+    style={{
+      fontSize: '20px',
+      fontWeight: 'bold',
+      color: '#b8860b'
+    }}
+  >
+    🏆 {myTip.points} {myTip.points === 1 ? 'bod' : 'body'}
+  </div>
+</div>
                 </div>
               )
             })}
