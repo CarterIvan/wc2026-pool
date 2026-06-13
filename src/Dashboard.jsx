@@ -807,7 +807,7 @@ Upraviť(1)
 
   <div
     style={{
-      fontSize: '24px',
+      fontSize: '18px',
       fontWeight: 'bold',
       marginBottom: '10px'
     }}
@@ -842,7 +842,14 @@ Upraviť(1)
       color: '#b8860b'
     }}
   >
-    🏆 {myTip.points} {myTip.points === 1 ? 'bod' : 'body'}
+    🏆 {myTip.points}{' '}
+{
+  myTip.points === 1
+    ? 'bod'
+    : myTip.points === 0
+    ? 'bodov'
+    : 'body'
+}
   </div>
 </div>
                 </div>
