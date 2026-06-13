@@ -182,7 +182,7 @@ function App() {
     letterSpacing: '1px'
   }}
 >
-  CREATED BY IVAN PONICAN
+  CREATED BY IVAN PONICAN version 1.3
 </div>
       </div>
     </div>
