@@ -783,7 +783,9 @@ Upraviť(1)
 <div
   style={{
     marginTop: '20px',
-    background: 'white',
+    background:
+  'linear-gradient(135deg, #f8fbff 0%, #ddeafc 100%)',
+border: '1px solid #c5d8f2',
     borderRadius: '8px',
     padding: '12px',
     boxShadow: '0 1px 4px rgba(0,0,0,0.08)'
