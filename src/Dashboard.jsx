@@ -795,7 +795,7 @@ Upraviť(1)
                   </h3>
 
                   <p>
-                    Rezultat:{' '}
+                    Vysledok:{' '}
                     {match.home_score}:
                     {match.away_score}
                   </p>
