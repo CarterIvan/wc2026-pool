@@ -368,6 +368,48 @@ async function calculatePoints(matchId) {
   >
     Predikcie
   </h3>
+  {matches
+  .filter(m => !m.finished && m.show_predictions)
+  .map(match => (
+    <div
+  key={match.id}
+  style={{
+  border: '2px solid #4caf50',
+  background: '#dff5df',
+  padding: '10px',
+  marginBottom: '10px',
+  borderRadius: '10px',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+}}
+>
+  <div
+  style={{
+    color: 'red',
+    fontWeight: 'bold',
+    marginBottom: '5px'
+  }}
+>
+  🔴 LIVE
+</div>
+      <h3>
+        {match.home_team} - {match.away_team}
+      </h3>
+
+      {predictions
+        .filter(p => p.match_id === match.id)
+        .map(p => {
+          const pl = players.find(
+            x => x.id === p.player_id
+          )
+
+          return (
+            <div key={p.id}>
+              {pl?.name}: {p.predicted_home}:{p.predicted_away}
+            </div>
+          )
+        })}
+    </div>
+))}
   <h3
   style={{
     textAlign: 'center',
@@ -452,7 +494,7 @@ async function calculatePoints(matchId) {
   new Date(match.kickoff_time)
   const isFinished = match.finished
 
-if (!matchStarted || isFinished)
+if (true)
   return null
 
             return (
