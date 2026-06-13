@@ -23,6 +23,18 @@ function Dashboard({ player, logout }) {
       .from('matches')
       .select('*')
       .order('kickoff_time')
+      for (const match of matchesData || []) {
+  if (
+    !match.finished &&
+    !match.show_predictions &&
+    new Date() >= new Date(match.kickoff_time)
+  ) {
+    await supabase
+      .from('matches')
+      .update({ show_predictions: true })
+      .eq('id', match.id)
+  }
+}
 
     const { data: playersData } = await supabase
       .from('players')
