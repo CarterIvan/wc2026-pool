@@ -483,10 +483,14 @@ if (new Date() >= new Date(match.kickoff_time)) {
     <div
       key={match.id}
       style={{
-        border: '1px solid #ccc',
-        padding: '10px',
-        marginBottom: '10px'
-      }}
+  background: 'linear-gradient(135deg, #fffdf7 0%, #f8f3df 100%)',
+  border: '1px solid #e6d7a8',
+  borderRadius: '14px',
+  padding: '12px',
+  marginBottom: '10px',
+  boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+  transition: 'all 0.2s ease'
+}}
     >
       <div
   onClick={() =>
@@ -496,10 +500,12 @@ if (new Date() >= new Date(match.kickoff_time)) {
         : match.id
     )
   }
- style={{
+style={{
   cursor: 'pointer',
-  fontWeight: 'bold',
-  fontSize: '10px'
+  fontWeight: '600',
+  fontSize: '13px',
+  color: '#5b556e',
+  letterSpacing: '0.3px'
 }}
 >
   {openedHistoryMatch === match.id ? '▼' : '▶'}{' '}
@@ -508,39 +514,53 @@ if (new Date() >= new Date(match.kickoff_time)) {
 
 
       {openedHistoryMatch === match.id && (
-  <>
+  <div
+    style={{
+      marginTop: '10px',
+      paddingTop: '10px',
+      borderTop: '1px solid #e6d7a8'
+    }}
+  >
     {predictions
       .filter(p => p.match_id === match.id)
       .map(p => {
-          const pl = players.find(
-            x => x.id === p.player_id
-          )
+        const pl = players.find(
+          x => x.id === p.player_id
+        )
 
-          return (
-            <div key={p.id}>
-              {pl?.name}: {p.predicted_home}:{p.predicted_away}
-            </div>
-                 )
-        })}
-  </>
+        return (
+          <div key={p.id}>
+            {pl?.name}: {p.predicted_home}:{p.predicted_away}
+          </div>
+        )
+      })}
+  </div>
 )}
     </div>
   ))}
   {matches.filter(m => m.finished).length > visibleHistoryPredictions && (
   <div style={{ textAlign: 'center', marginTop: '10px' }}>
-    <button
-      onClick={() =>
-        setVisibleHistoryPredictions(
-          visibleHistoryPredictions + 5
-        )
-      }
-      style={{
-        padding: '8px 15px',
-        cursor: 'pointer'
-      }}
-    >
-      Zobraziť ďalších 5
-    </button>
+  <button
+  onClick={() =>
+    setVisibleHistoryPredictions(
+      visibleHistoryPredictions + 5
+    )
+  }
+  style={{
+    background: 'linear-gradient(135deg, #e2ae13 0%, #b8860b 100%)',
+    color: 'white',
+    border: 'none',
+    borderRadius: '10px',
+    padding: '10px 18px',
+    fontWeight: '600',
+    fontSize: '14px',
+    cursor: 'pointer',
+    boxShadow: '0 4px 10px rgba(255, 222, 138, 0.25)',
+    transition: 'all 0.2s ease'
+  }}
+>
+  📜 Zobraziť ďalších 5
+</button>
   </div>
 )}
 
