@@ -834,12 +834,29 @@ Upraviť(1)
             <div
               key={p.id}
               style={{
-  background: 'white',
+  background:
+    p.id === player.id
+      ? 'linear-gradient(135deg, #ffe9a8, #ffd54f)'
+      : 'white',
+
+  border:
+    p.id === player.id
+      ? '2px solid #d4a017'
+      : 'none',
+
   borderRadius: '8px',
   padding: '10px',
   marginBottom: '8px',
+
   boxShadow:
-    '0 1px 4px rgba(0,0,0,0.08)'
+    p.id === player.id
+      ? '0 3px 10px rgba(212,160,23,0.35)'
+      : '0 1px 4px rgba(0,0,0,0.08)',
+
+  fontWeight:
+    p.id === player.id
+      ? 'bold'
+      : 'normal'
 }}
             >
            <>
