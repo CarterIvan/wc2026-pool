@@ -650,7 +650,7 @@ if (true)
           'linear-gradient(135deg, #d43017, #110bb8)',
         color: 'white',
         padding: '4px 40px',
-        fontSize: '11px',
+        fontSize: '9px',
         fontWeight: 'bold',
         boxShadow:
           '0 2px 8px rgba(0,0,0,0.2)',
@@ -716,31 +716,60 @@ Upraviť(1)
                 </div>
               ) : (
                 <>
-                  <input
-                    type="number"
-                    placeholder="Home"
-                    onChange={e =>
-                      updateTip(
-                        match.id,
-                        'home',
-                        e.target.value
-                      )
-                    }
-                  />
+                <input
+  type="number"
+  min="0"
+  placeholder="0"
+  onChange={e =>
+    updateTip(
+      match.id,
+      'home',
+      e.target.value
+    )
+  }
+  style={{
+  width: '55px',
+  height: '55px',
+  textAlign: 'center',
+  fontSize: '22px',
+  fontWeight: 'bold',
+  border: '2px solid #d8d8d8',
+  borderRadius: '12px',
+  background: '#fafafa',
+  lineHeight: '55px',
+  padding: '0',
+  boxSizing: 'border-box'
+}}
+/>
 
                   {' : '}
 
-                  <input
-                    type="number"
-                    placeholder="Away"
-                    onChange={e =>
-                      updateTip(
-                        match.id,
-                        'away',
-                        e.target.value
-                      )
-                    }
-                  />
+                 <input
+  type="number"
+  min="0"
+  placeholder="0"
+  onChange={e =>
+    updateTip(
+      match.id,
+      'away',
+      e.target.value
+    )
+  }
+  style={{
+  width: '55px',
+  height: '55px',
+  textAlign: 'center',
+  fontSize: '22px',
+  fontWeight: 'bold',
+  border: '2px solid #d8d8d8',
+  borderRadius: '12px',
+  background: '#fafafa',
+  lineHeight: '55px',
+  padding: '0',
+  boxSizing: 'border-box'
+  
+}}
+/>
 
                   <br />
                   <br />
