@@ -949,89 +949,61 @@ border: '1px solid #c5d8f2',
                 <div
                   key={match.id}
                   style={{
-                   border: `2px solid ${
-  !match.finished
-    ? 'orange'
-    : myTip.points === 3
-    ? 'green'
-    : myTip.points === 1
-    ? '#d4a017'
-    : 'red'
-}`,
-                    padding: '15px',
-                    marginBottom: '15px',
-                    background:
-  !match.finished
-    ? '#fff8d6'
-    : myTip.points === 3
-    ? '#e8ffe8'
-    : myTip.points === 1
-    ? '#fff4cc'
-    : '#ffe8e8'
-                  }}
+  border: 'none',
+
+  borderLeft:
+    myTip.points === 3
+      ? '9px solid #2e7d32'
+      : myTip.points === 1
+      ? '9px solid #d4a017'
+      : '9px solid #d9534f',
+
+  padding: '10px 15px',
+  marginBottom: '12px',
+
+  background: 'white',
+
+  borderRadius: '14px',
+
+  boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+}}
                 >
                   <h3>
                     {match.home_team} -{' '}
                     {match.away_team}
                   </h3>
 
-                  <div style={{ marginTop: '15px' }}>
-  <div
-    style={{
-      fontSize: '12px',
-      textTransform: 'uppercase',
-      opacity: 0.7
-    }}
-  >
-    ⚽ Výsledok
-  </div>
+                <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '30px',
+    marginTop: '15px',
+    fontSize: '18px'
+  }}
+>
+  <span style={{ fontWeight: 'bold' }}>
+    {match.home_score}:{match.away_score}
+  </span>
 
-  <div
+  <span style={{ color: '#777' }}>
+    Tip {myTip.predicted_home}:{myTip.predicted_away}
+  </span>
+
+  <span
     style={{
-      fontSize: '18px',
       fontWeight: 'bold',
-      marginBottom: '10px'
+      color:
+        myTip.points === 3
+          ? '#2e7d32'
+          : myTip.points === 1
+          ? '#d4a017'
+          : '#888'
     }}
   >
-    {match.home_score} : {match.away_score}
-  </div>
-
-  <div
-    style={{
-      fontSize: '12px',
-      textTransform: 'uppercase',
-      opacity: 0.7
-    }}
-  >
-    🎯 Tvoj tip
-  </div>
-
-  <div
-    style={{
-      fontSize: '22px',
-      fontWeight: 'bold',
-      marginBottom: '10px'
-    }}
-  >
-    {myTip.predicted_home} : {myTip.predicted_away}
-  </div>
-
-  <div
-    style={{
-      fontSize: '20px',
-      fontWeight: 'bold',
-      color: '#b8860b'
-    }}
-  >
-    🏆 {myTip.points}{' '}
-{
-  myTip.points === 1
-    ? 'bod'
-    : myTip.points === 0
-    ? 'bodov'
-    : 'body'
-}
-  </div>
+    {myTip.points} b
+  </span>
 </div>
                 </div>
               )
