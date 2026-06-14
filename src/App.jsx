@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabase'
 import Dashboard from './Dashboard'
+import './App.css'
 
 function App() {
   const [name, setName] = useState('')
@@ -110,11 +111,12 @@ function App() {
     fontSize: '60px',
     textAlign: 'center',
     marginBottom: '10px',
+    animation: 'float 2.5s ease-in-out infinite',
+    filter: 'drop-shadow(0 0 12px rgba(255,215,0,0.6))'
   }}
 >
   🏆
 </div>
-
 
        <h1
   style={{
@@ -182,7 +184,7 @@ function App() {
     letterSpacing: '1px'
   }}
 >
-  CREATED BY IVAN PONICAN version 1.3
+  CREATED BY IVAN PONICAN version 2.0
 </div>
       </div>
     </div>
