@@ -953,10 +953,10 @@ border: '1px solid #c5d8f2',
 
   borderLeft:
     myTip.points === 3
-      ? '9px solid #2e7d32'
+      ? '20px solid #2e7d32'
       : myTip.points === 1
-      ? '9px solid #d4a017'
-      : '9px solid #d9534f',
+      ? '20px solid #d4a017'
+      : '20px solid #d9534f',
 
   padding: '10px 15px',
   marginBottom: '12px',
