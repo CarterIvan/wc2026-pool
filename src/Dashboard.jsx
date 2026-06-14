@@ -958,12 +958,12 @@ border: '1px solid #c5d8f2',
       ? '20px solid #d4a017'
       : '20px solid #d9534f',
 
-  padding: '10px 15px',
+  padding: '10px 5px',
   marginBottom: '12px',
 
   background: 'white',
 
-  borderRadius: '14px',
+  borderRadius: '30px',
 
   boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
 }}
