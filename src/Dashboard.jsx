@@ -626,21 +626,44 @@ if (true)
           {matches
   .filter(match => !match.finished)
   .map(match => (
-            <div
-              key={match.id}
-              style={{
-  border: '1px solid #ddd',
-  padding: '15px',
-  marginBottom: '15px',
-  borderRadius: '12px',
-  boxShadow:
-    '0 2px 8px rgba(0,0,0,0.08)',
-  background: 'white'
-}}
-            >
-              <h3>
-                {match.home_team} - {match.away_team}
-              </h3>
+           <div
+  key={match.id}
+  style={{
+    position: 'relative',
+    border: '1px solid #ddd',
+    padding: '15px',
+    marginBottom: '15px',
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    background: 'white',
+    overflow: 'hidden'
+  }}
+>
+  {!myPredictions[match.id] && (
+    <div
+      style={{
+        position: 'absolute',
+        top: '12px',
+        right: '-35px',
+        transform: 'rotate(45deg)',
+        background:
+          'linear-gradient(135deg, #d43017, #110bb8)',
+        color: 'white',
+        padding: '4px 40px',
+        fontSize: '11px',
+        fontWeight: 'bold',
+        boxShadow:
+          '0 2px 8px rgba(0,0,0,0.2)',
+        zIndex: 10
+      }}
+    >
+      NOVÝ ZÁPAS
+    </div>
+  )}
+
+  <h3>
+    {match.home_team} - {match.away_team}
+  </h3>
 
               <p>
                 {new Date(
