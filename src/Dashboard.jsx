@@ -958,7 +958,7 @@ border: '1px solid #c5d8f2',
         borderRadius: '8px'
       }}
     >
-      Prikaži još 5
+      Zobrazit 5
     </button>
   </div>
 )}
