@@ -144,13 +144,33 @@ async function calculatePoints(matchId) {
     )
 
   for (const prediction of matchPredictions) {
+    console.log('--------------------')
+console.log('PLAYER ID:', prediction.player_id)
+console.log(
+  'TIP:',
+  prediction.predicted_home,
+  ':',
+  prediction.predicted_away
+)
+console.log(
+  'REAL:',
+  match.home_score,
+  ':',
+  match.away_score
+)
     let points = 0
 
-    const realHome =
-      match.home_score
+   const score = adminScores[matchId]
 
-    const realAway =
-      match.away_score
+const realHome =
+  score
+    ? Number(score.home)
+    : match.home_score
+
+const realAway =
+  score
+    ? Number(score.away)
+    : match.away_score
 
     const predHome =
       prediction.predicted_home
@@ -177,14 +197,15 @@ async function calculatePoints(matchId) {
           : predHome < predAway
           ? 'AWAY'
           : 'DRAW'
-
+console.log('REAL RESULT:', realResult)
+console.log('TIP RESULT:', predResult)
       if (
         realResult === predResult
       ) {
         points = 1
       }
     }
-
+console.log('POINTS:', points)
     await supabase
       .from('predictions')
       .update({ points })
@@ -284,20 +305,45 @@ if (new Date() >= new Date(match.kickoff_time)) {
   }}
 >
       <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: '20px'
-        }}
-      >
-        <button onClick={logout}>
-          Logout
-        </button>
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    
+  }}
+>
+  <button onClick={logout}>
+    Logout
+  </button>
 
-        <div>
-          Body: {player.points}
-        </div>
-      </div>
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      
+    }}
+  >
+    <button
+  onClick={() => window.location.reload()}
+  style={{
+    background: '#39a0f5b3',
+    color: 'white',
+    border: 'none',
+    padding: '6px 12px',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontWeight: 'bold'
+  }}
+>
+  🔄 Obnoviť
+</button>
+
+    <div>
+      Body: {player?.points || 0}
+    </div>
+  </div>
+</div>
 
       <h1
         style={{
