@@ -519,7 +519,7 @@ if (new Date() >= new Date(match.kickoff_time)) {
 >
         <div
   style={{
-    background: '#fff9db',
+    background: 'rgb(232, 244, 255)',
     padding: '15px',
     borderRadius: '12px'
   }}
