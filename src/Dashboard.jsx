@@ -466,6 +466,7 @@ if (new Date() >= new Date(match.kickoff_time)) {
               {' : '}
 
               <input
+             
                 type="number"
                 placeholder="Away"
                 onChange={e =>
@@ -483,6 +484,15 @@ if (new Date() >= new Date(match.kickoff_time)) {
               <br />
 
               <button
+            style={{
+  backgroundColor: '#F88379',
+  border: 'none',
+  color: 'white',
+  padding: '8px 12px',
+  borderRadius: '6px',
+  cursor: 'pointer'
+}}
+             
   onClick={() =>
     finishMatch(match.id)
   }
@@ -493,6 +503,14 @@ if (new Date() >= new Date(match.kickoff_time)) {
 {' '}
 
 <button
+style={{
+  backgroundColor: '#4EDF7A',
+  border: 'none',
+  color: 'white',
+  padding: '8px 12px',
+  borderRadius: '6px',
+  cursor: 'pointer'
+}}
   onClick={() =>
     calculatePoints(match.id)
   }
