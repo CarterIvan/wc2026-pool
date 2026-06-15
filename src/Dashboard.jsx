@@ -497,7 +497,7 @@ if (new Date() >= new Date(match.kickoff_time)) {
     finishMatch(match.id)
   }
 >
-  Završi utakmicu
+  Ukoncit Zapas
 </button>
 
 {' '}
@@ -515,7 +515,7 @@ style={{
     calculatePoints(match.id)
   }
 >
-  Obračunaj poene
+  Spocitat body
 </button>
 
               <hr />
