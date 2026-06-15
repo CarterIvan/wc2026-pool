@@ -1,6 +1,23 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
+const pulseStyle = `
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
 
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+`
 function Dashboard({ player, logout }) {
   const [matches, setMatches] = useState([])
   const [players, setPlayers] = useState([])
@@ -15,12 +32,30 @@ function Dashboard({ player, logout }) {
   const [editingMatch, setEditingMatch] = useState(null)
   const [lastMatchPoints, setLastMatchPoints] = useState([])
 const [lastMatchName, setLastMatchName] = useState('')
+const [comments, setComments] = useState([])
+const [newComment, setNewComment] = useState('')
 
-  useEffect(() => {
+useEffect(() => {
+  loadData()
+
+  const interval = setInterval(() => {
     loadData()
-  }, [])
+  }, 3000)
 
-  async function loadData() {
+  return () => clearInterval(interval)
+}, [])
+
+useEffect(() => {
+  const style = document.createElement('style')
+  style.innerHTML = pulseStyle
+  document.head.appendChild(style)
+
+  return () => {
+    document.head.removeChild(style)
+  }
+}, [])
+
+async function loadData() {
     const { data: matchesData } = await supabase
       .from('matches')
       .select('*')
@@ -44,12 +79,18 @@ const [lastMatchName, setLastMatchName] = useState('')
       .order('points', { ascending: false })
 
     const { data: predictionsData } = await supabase
-      .from('predictions')
-      .select('*')
+  .from('predictions')
+  .select('*')
+
+const { data: commentsData } = await supabase
+  .from('comments')
+  .select('*')
+  .order('created_at')
 
   setMatches(matchesData || [])
 setPlayers(playersData || [])
 setPredictions(predictionsData || [])
+setComments(commentsData || [])
 
 const finishedMatches = (matchesData || [])
   .filter(m => m.finished)
@@ -92,7 +133,28 @@ const mine = {}
       }
     }))
   }
+async function sendComment(matchId) {
+  if (!newComment.trim()) return
 
+  const { error } = await supabase
+    .from('comments')
+    .insert([
+      {
+        match_id: matchId,
+        player_id: player.id,
+        message: newComment
+      }
+    ])
+
+  if (error) {
+    console.log(error)
+    alert('Greška pri slanju komentara')
+    return
+  }
+
+  setNewComment('')
+  loadData()
+}
   async function finishMatch(matchId) {
     const score = adminScores[matchId]
 
@@ -484,32 +546,181 @@ if (new Date() >= new Date(match.kickoff_time)) {
   boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
 }}
 >
-  <div
+ <div
   style={{
     color: 'red',
     fontWeight: 'bold',
     marginBottom: '5px'
   }}
 >
-  🔴 LIVE
+  <span
+    style={{
+      display: 'inline-block',
+      animation: 'pulse 1.5s infinite'
+    }}
+  >
+    🔴
+  </span>{' '}
+  LIVE
 </div>
-      <h3>
-        {match.home_team} - {match.away_team}
-      </h3>
+      <h3
+  style={{
+    marginTop: '10px',
+    marginBottom: '15px',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#555'
+  }}
+>
+  {match.home_team}
+
+  <span
+    style={{
+      color: '#d4a017',
+      margin: '0 10px',
+      fontWeight: 'bold'
+    }}
+  >
+    VS
+  </span>
+
+  {match.away_team}
+</h3>
 
       {predictions
-        .filter(p => p.match_id === match.id)
-        .map(p => {
-          const pl = players.find(
-            x => x.id === p.player_id
-          )
+  .filter(p => p.match_id === match.id)
+  .map(p => {
+    const pl = players.find(
+      x => x.id === p.player_id
+    )
 
-          return (
-            <div key={p.id}>
-              {pl?.name}: {p.predicted_home}:{p.predicted_away}
-            </div>
-          )
-        })}
+    return (
+      <div key={p.id}>
+        {pl?.name}: {p.predicted_home}:{p.predicted_away}
+      </div>
+    )
+  })
+}
+
+<hr />
+
+<h4>💬 Diskusia</h4>
+
+
+<div
+  style={{
+    maxHeight: '180px',
+    overflowY: 'auto',
+    marginBottom: '10px',
+    paddingRight: '4px'
+  }}
+>
+  {comments
+  .filter(c => c.match_id === match.id)
+  .slice()
+  .reverse()
+  .map(c => {
+      const author = players.find(
+        p => p.id === c.player_id
+      )
+
+      return (
+        <div
+          key={c.id}
+          style={{
+            background: '#ffffff',
+            borderRadius: '12px',
+            padding: '8px',
+            marginBottom: '8px',
+            textAlign: 'left',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.08)'
+          }}
+        >
+          <div
+  style={{
+    fontWeight: 'bold',
+    fontSize: '13px',
+    marginBottom: '3px',
+    color: author?.id === player.id ? '#0084ff' : '#555'
+  }}
+>
+  👤 {author?.name}
+</div>
+
+          <div
+            style={{
+              fontSize: '14px',
+              marginBottom: '4px'
+            }}
+          >
+            {c.message}
+          </div>
+
+          <div
+            style={{
+              fontSize: '11px',
+              color: '#777'
+            }}
+          >
+            {new Date(c.created_at).toLocaleTimeString('sk-SK', {
+              hour: '2-digit',
+              minute: '2-digit'
+            })}
+          </div>
+        </div>
+      )
+    })}
+</div>
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '6px',
+    marginBottom: '8px'
+  }}
+>
+  <button onClick={() => setNewComment(prev => prev + ' ⚽')}>⚽</button>
+
+  <button onClick={() => setNewComment(prev => prev + ' 🔥')}>🔥</button>
+
+  <button onClick={() => setNewComment(prev => prev + ' 😂')}>😂</button>
+
+  <button onClick={() => setNewComment(prev => prev + ' 🤣')}>🤣</button>
+
+  <button onClick={() => setNewComment(prev => prev + ' 😭')}>😭</button>
+</div>
+<input
+  value={newComment}
+  onChange={e => setNewComment(e.target.value)}
+  placeholder="Napíš komentár..."
+  style={{
+    width: '70%',
+    padding: '8px 10px',
+    borderRadius: '8px',
+    border: '1px solid #d4c28a',
+    outline: 'none',
+    fontSize: '13px',
+    background: '#fffdf7'
+  }}
+/>
+
+<button
+  onClick={() => sendComment(match.id)}
+  style={{
+    padding: '6px 10px',
+    marginTop: '8px',
+    border: 'none',
+    borderRadius: '8px',
+    background: '#d4a017',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '13px',
+    cursor: 'pointer',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+  }}
+>
+  💬 Pošli
+</button>
     </div>
 ))}
   <h3
@@ -862,18 +1073,18 @@ Upraviť(1)
     gap: '8px'
   }}
 >
-  <span
-    style={{
-      width: '10px',
-      height: '10px',
-      backgroundColor: '#ff3b30',
-      borderRadius: '50%',
-      display: 'inline-block',
-      animation: 'pulse 1.5s infinite'
-    }}
-  ></span>
-
-  LIVE Tabulka
+ <span
+  style={{
+    width: '12px',
+    height: '12px',
+    background: '#ff0000',
+    borderRadius: '50%',
+    display: 'inline-block',
+    marginRight: '6px',
+    animation: 'pulse 1.5s infinite'
+  }}
+/>
+LIVE
 </h3>
 
           {players.map((p, index) => (
