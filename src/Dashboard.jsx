@@ -450,8 +450,18 @@ if (new Date() >= new Date(match.kickoff_time)) {
               <br />
 
               <input
+              style={{
+  width: '55px',
+  padding: '10px',
+  border: '2px solid #d9d9d9',
+  borderRadius: '10px',
+  fontSize: '20px',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  background: '#fafafa'
+}}
                 type="number"
-                placeholder="Home"
+                placeholder="-"
                 onChange={e =>
                   setAdminScores(prev => ({
                     ...prev,
@@ -466,9 +476,18 @@ if (new Date() >= new Date(match.kickoff_time)) {
               {' : '}
 
               <input
-             
+             style={{
+  width: '55px',
+  padding: '10px',
+  border: '2px solid #d9d9d9',
+  borderRadius: '10px',
+  fontSize: '20px',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  background: '#fafafa'
+}}
                 type="number"
-                placeholder="Away"
+                placeholder="-"
                 onChange={e =>
                   setAdminScores(prev => ({
                     ...prev,
