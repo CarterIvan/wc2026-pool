@@ -390,8 +390,8 @@ if (new Date() >= new Date(match.kickoff_time)) {
     <button
   onClick={() => window.location.reload()}
   style={{
-    background: '#39a0f5b3',
-    color: 'white',
+    background: '#d0e7fab3',
+    color: 'black',
     border: 'none',
     padding: '6px 12px',
     borderRadius: '8px',
@@ -403,7 +403,7 @@ if (new Date() >= new Date(match.kickoff_time)) {
 </button>
 
     <div>
-      Body: {player?.points || 0}
+      🏆 Body: {player?.points || 0}
     </div>
   </div>
 </div>
