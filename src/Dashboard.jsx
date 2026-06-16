@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
+import tipovackaLogo from './assets/tipovacka-logo.png'
 const pulseStyle = `
 @keyframes pulse {
   0% {
@@ -407,13 +408,22 @@ if (new Date() >= new Date(match.kickoff_time)) {
   </div>
 </div>
 
-      <h1
-        style={{
-          textAlign: 'center'
-        }}
-      >
-        WC2026 Tipovanie
-      </h1>
+      <div
+  style={{
+    textAlign: 'center',
+    marginBottom: '10px'
+  }}
+>
+  <img
+    src={tipovackaLogo}
+    alt="Tipovačka"
+    style={{
+      width: '100%',
+      maxWidth: '500px',
+      height: 'auto'
+    }}
+  />
+</div>
 
       <h2
         style={{
@@ -523,13 +533,16 @@ if (new Date() >= new Date(match.kickoff_time)) {
 
 <button
 style={{
+  
   backgroundColor: '#4EDF7A',
   border: 'none',
   color: 'white',
   padding: '8px 12px',
   borderRadius: '6px',
   cursor: 'pointer'
+  
 }}
+
   onClick={() =>
     calculatePoints(match.id)
   }

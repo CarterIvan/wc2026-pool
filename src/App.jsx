@@ -3,6 +3,7 @@ import { supabase } from './supabase'
 import Dashboard from './Dashboard'
 import './App.css'
 
+
 function App() {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
@@ -151,6 +152,7 @@ function App() {
             setPassword(
               e.target.value
             )
+            
           }
           style={{
             width: '100%',
