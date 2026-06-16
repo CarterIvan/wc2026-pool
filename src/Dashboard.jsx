@@ -839,12 +839,12 @@ style={{
     <div
       key={match.id}
       style={{
-  background: 'linear-gradient(135deg, #fffdf7 0%, #f8f3df 100%)',
-  border: '1px solid #e6d7a8',
+  background: 'linear-gradient(135deg, #fffdf7 0%, #ecfcfb 100%)',
+  border: 'none',
   borderRadius: '14px',
   padding: '12px',
   marginBottom: '10px',
-  boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.18)',
   transition: 'all 0.2s ease'
 }}
     >
