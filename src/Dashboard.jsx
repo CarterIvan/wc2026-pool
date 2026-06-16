@@ -1126,7 +1126,7 @@ Upraviť(1)
     animation: 'pulse 1.5s infinite'
   }}
 />
-LIVE
+LIVE Tabulka
 </h3>
 
           {players.map((p, index) => (
