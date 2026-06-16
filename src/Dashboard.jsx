@@ -695,7 +695,7 @@ style={{
   <span
     style={{
       display: 'inline-block',
-      animation: 'pulse 1.5s infinite'
+      animation: 'pulse 1.2s infinite'
     }}
   >
     🔴
