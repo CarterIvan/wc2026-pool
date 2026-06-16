@@ -1347,7 +1347,21 @@ border: '1px solid #c5d8f2',
             marginBottom: '4px'
           }}
         >
-          <span>{pl?.name}</span>
+          <span
+  style={{
+    color:
+      pl?.id === player.id
+        ? '#1976d2'
+        : '#555',
+
+    fontWeight:
+      pl?.id === player.id
+        ? 'bold'
+        : 'normal'
+  }}
+>
+  {pl?.name}
+</span>
           <span>+{p.points}</span>
         </div>
       )
