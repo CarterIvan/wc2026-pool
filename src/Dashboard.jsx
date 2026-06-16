@@ -677,8 +677,8 @@ style={{
     <div
   key={match.id}
   style={{
-  border: '2px solid #4caf50',
-  background: '#dff5df',
+  border: '2px solid #78b97a',
+  background: '#ffffff',
   padding: '10px',
   marginBottom: '10px',
   borderRadius: '10px',
