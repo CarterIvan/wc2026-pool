@@ -958,12 +958,16 @@ if (true)
   <h3>
     {match.home_team} - {match.away_team}
   </h3>
-
-              <p>
-                {new Date(
-                  match.kickoff_time
-                ).toLocaleString()}
-              </p>
+<p>
+  {new Date(match.kickoff_time).toLocaleString("sk-SK", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: false,
+  })}
+</p>
 
               {myPredictions[match.id] && editingMatch !== match.id ? (
                 <div>
