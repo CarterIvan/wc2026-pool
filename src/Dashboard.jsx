@@ -425,13 +425,62 @@ if (new Date() >= new Date(match.kickoff_time)) {
   />
 </div>
 
-      <h2
-        style={{
-          textAlign: 'center'
-        }}
-      >
-        Vitaj {player.name}
-      </h2>
+    <div
+  style={{
+    textAlign: 'center',
+    marginBottom: '20px'
+  }}
+>
+  <div
+  style={{
+    background: '#fff',
+    borderRadius: '18px',
+    padding: '15px 25px',
+    maxWidth: '250px',
+    margin: '0 auto 25px auto',
+    boxShadow: '0 3px 10px rgba(0,0,0,0.08)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '15px'
+  }}
+>
+  <div style={{ fontSize: '32px' }}>
+    ⚽
+  </div>
+
+  <div>
+    <div
+      style={{
+        fontSize: '16px',
+        color: '#666'
+      }}
+    >
+      Vitaj
+    </div>
+
+    <div
+      style={{
+        fontSize: '20px',
+        fontWeight: 'bold',
+        color: '#1d3557'
+      }}
+    >
+      {player.name} 👋
+    </div>
+  </div>
+</div>
+
+  <div
+    style={{
+      fontSize: '26px',
+      fontWeight: '700',
+      color: '#1d3557'
+    }}
+  >
+   
+  </div>
+</div>
 
       {player.is_admin && (
         <div
