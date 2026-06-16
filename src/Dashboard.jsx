@@ -1039,8 +1039,8 @@ if (true)
     <div
       style={{
         position: 'absolute',
-        top: '12px',
-        right: '-35px',
+        top: '7px',
+        right: '-30px',
         transform: 'rotate(45deg)',
         background:
           'linear-gradient(135deg, #d43017, #110bb8)',
@@ -1053,7 +1053,7 @@ if (true)
         zIndex: 10
       }}
     >
-      NOVÝ ZÁPAS
+      NOVÝ 
     </div>
   )}
 
