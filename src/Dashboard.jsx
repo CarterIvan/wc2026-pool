@@ -854,13 +854,13 @@ style={{
     )
   }
   style={{
-    background: 'linear-gradient(135deg, #e2ae13 0%, #b8860b 100%)',
+    background: 'linear-gradient(135deg, #13c3e2 0%, #378fe2 100%)',
     color: 'white',
     border: 'none',
     borderRadius: '10px',
     padding: '10px 18px',
     fontWeight: '600',
-    fontSize: '14px',
+    fontSize: '12px',
     cursor: 'pointer',
     boxShadow: '0 4px 10px rgba(255, 222, 138, 0.25)',
     transition: 'all 0.2s ease'
