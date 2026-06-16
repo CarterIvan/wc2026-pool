@@ -419,7 +419,7 @@ if (new Date() >= new Date(match.kickoff_time)) {
     alt="Tipovačka"
     style={{
       width: '100%',
-      maxWidth: '500px',
+      maxWidth: '350px',
       height: 'auto'
     }}
   />
