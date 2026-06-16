@@ -958,7 +958,8 @@ if (true)
   <h3>
     {match.home_team} - {match.away_team}
   </h3>
-<p>
+
+            <p>
   {new Date(match.kickoff_time).toLocaleString("sk-SK", {
     day: "numeric",
     month: "numeric",
