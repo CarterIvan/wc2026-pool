@@ -577,7 +577,7 @@ style={{
   <h3
     style={{
       textAlign: 'center',
-      color: '#b8860b'
+      color: '#2165e4'
     }}
   >
     Predikcie
@@ -776,7 +776,7 @@ style={{
   <h3
   style={{
     textAlign: 'center',
-    color: '#b8860b',
+    color: '#ff5757',
     marginTop: '30px'
   }}
 >
@@ -854,13 +854,13 @@ style={{
     )
   }
   style={{
-    background: 'linear-gradient(135deg, #13c3e2 0%, #378fe2 100%)',
+    background: 'linear-gradient(135deg, #9acefb 0%, #378fe2 100%)',
     color: 'white',
     border: 'none',
     borderRadius: '10px',
-    padding: '10px 18px',
+    padding: '3px 10px',
     fontWeight: '600',
-    fontSize: '12px',
+    fontSize: '11px',
     cursor: 'pointer',
     boxShadow: '0 4px 10px rgba(255, 222, 138, 0.25)',
     transition: 'all 0.2s ease'
