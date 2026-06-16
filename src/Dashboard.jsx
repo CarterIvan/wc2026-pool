@@ -35,6 +35,46 @@ function Dashboard({ player, logout }) {
 const [lastMatchName, setLastMatchName] = useState('')
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState('')
+const countryCodes = {
+  France: 'fr',
+  Senegal: 'sn',
+  Iraq: 'iq',
+  Norway: 'no',
+  Argentina: 'ar',
+  Algeria: 'dz',
+  Austria: 'at',
+  Jordan: 'jo',
+  Spain: 'es',
+  'Cape Verde': 'cv',
+  Sweden: 'se',
+  Tunis: 'tn',
+  Iran: 'ir',
+  'New Zeland': 'nz',
+  Uruguay: 'uy',
+  'Saudi Arabia': 'sa',
+  Belgium: 'be',
+  Egypt: 'eg',
+  Netherlands: 'nl',
+  Japan: 'jp',
+  England: 'gb',
+  Croatia: 'hr',
+  Portugal: 'pt',
+  'D.R.Congo': 'cd',
+  USA: 'us',
+  Paraguay: 'py',
+  Qatar: 'qa',
+  Switzerland: 'ch',
+  Brazil: 'br',
+  Marroco: 'ma',
+  Haiti: 'ht',
+  Scotland: 'gb-sct',
+  Australia: 'au',
+  Turkey: 'tr',
+  Germany: 'de',
+  Curacao: 'cw',
+  Canada: 'ca',
+  'Bosnia and Herzegovina': 'ba'
+}
 
 useEffect(() => {
   loadData()
@@ -1017,9 +1057,39 @@ if (true)
     </div>
   )}
 
-  <h3>
-    {match.home_team} - {match.away_team}
-  </h3>
+  <h3
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    flexWrap: 'wrap'
+  }}
+>
+  <img
+    src={`https://flagcdn.com/24x18/${countryCodes[match.home_team]}.png`}
+    alt=""
+  />
+
+  {match.home_team}
+
+  <span
+    style={{
+      color: '#d4a017',
+      margin: '0 10px',
+      fontWeight: 'bold'
+    }}
+  >
+    VS
+  </span>
+
+  <img
+    src={`https://flagcdn.com/24x18/${countryCodes[match.away_team]}.png`}
+    alt=""
+  />
+
+  {match.away_team}
+</h3>
 
             <p>
   {new Date(match.kickoff_time).toLocaleString("sk-SK", {
@@ -1291,7 +1361,8 @@ border: '1px solid #c5d8f2',
 
 <div
   style={{
-    marginTop: '50px'
+    marginTop: '50px',
+    
   }}
 >
   <h2>Ukoncene zapasy</h2>
