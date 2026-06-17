@@ -73,7 +73,7 @@ const countryCodes = {
   Germany: 'de',
   Curacao: 'cw',
   Canada: 'ca',
-  'Bosnia and Herzegovina': 'ba',
+  Bosna: 'ba',
 Uzbekistan: 'uz',
 Colombia: 'co',
 'South Korea': 'kr',
