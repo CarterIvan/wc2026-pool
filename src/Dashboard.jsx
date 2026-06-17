@@ -82,6 +82,8 @@ Czechia: 'cz',
 Mexico: 'mx',
 'Ivory Coast': 'ci',
 Ecuador: 'ec',
+Panama: 'pa',
+Ghana: 'gh',
 }
 
 
