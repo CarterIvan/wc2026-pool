@@ -73,8 +73,17 @@ const countryCodes = {
   Germany: 'de',
   Curacao: 'cw',
   Canada: 'ca',
-  'Bosnia and Herzegovina': 'ba'
-}
+  'Bosnia and Herzegovina': 'ba',
+  Mexico: 'mx',
+  Ghana: 'gh',
+  Panama: 'pa',
+  Colombia: 'co',
+  Uzbekistan: 'uz',
+  Czechia: 'cz',
+  Ivory Coast: 'ci',
+Ecuador: 'ec',
+South Korea: 'kr',
+South Africa: 'za',
 
 useEffect(() => {
   loadData()
