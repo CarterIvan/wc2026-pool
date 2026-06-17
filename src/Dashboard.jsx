@@ -74,16 +74,17 @@ const countryCodes = {
   Curacao: 'cw',
   Canada: 'ca',
   'Bosnia and Herzegovina': 'ba',
-  Mexico: 'mx',
-  Ghana: 'gh',
-  Panama: 'pa',
-  Colombia: 'co',
-  Uzbekistan: 'uz',
-  Czechia: 'cz',
-  Ivory Coast: 'ci',
+Uzbekistan: 'uz',
+Colombia: 'co',
+'South Korea': 'kr',
+'South Africa': 'za',
+Czechia: 'cz',
+Mexico: 'mx',
+'Ivory Coast': 'ci',
 Ecuador: 'ec',
-South Korea: 'kr',
-South Africa: 'za',
+}
+
+
 
 useEffect(() => {
   loadData()
