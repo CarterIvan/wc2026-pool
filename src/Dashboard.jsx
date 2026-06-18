@@ -35,6 +35,7 @@ function Dashboard({ player, logout }) {
 const [lastMatchName, setLastMatchName] = useState('')
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState('')
+const [showAdminPanel, setShowAdminPanel] = useState(false)
 const countryCodes = {
   France: 'fr',
   Senegal: 'sn',
@@ -533,8 +534,25 @@ if (new Date() >= new Date(match.kickoff_time)) {
    
   </div>
 </div>
-
-      {player.is_admin && (
+{player.is_admin && (
+  <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+    <button
+      onClick={() => setShowAdminPanel(!showAdminPanel)}
+      style={{
+        padding: '10px 20px',
+        background: '#c71e1e',
+        color: 'white',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontWeight: 'bold'
+      }}
+    >
+      {showAdminPanel ? '❌ Zatvori Admin Panel' : '⚙️ Admin Panel'}
+    </button>
+  </div>
+)}
+      {player.is_admin && showAdminPanel && (
         <div
           style={{
             border: '2px solid red',
