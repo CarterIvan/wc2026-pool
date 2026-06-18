@@ -548,7 +548,7 @@ if (new Date() >= new Date(match.kickoff_time)) {
         fontWeight: 'bold'
       }}
     >
-      {showAdminPanel ? '❌ Zatvori Admin Panel' : '⚙️ Admin Panel'}
+      {showAdminPanel ? 'Zatvoriť Admin Panel' : '⚙️ Admin Panel'}
     </button>
   </div>
 )}
