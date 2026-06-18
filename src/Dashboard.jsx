@@ -540,15 +540,15 @@ if (new Date() >= new Date(match.kickoff_time)) {
       onClick={() => setShowAdminPanel(!showAdminPanel)}
       style={{
         padding: '10px 20px',
-        background: '#c71e1e',
+        background: '#00314d',
         color: 'white',
-        border: 'none',
+        border: '2px solid red',
         borderRadius: '8px',
         cursor: 'pointer',
         fontWeight: 'bold'
       }}
     >
-      {showAdminPanel ? 'Zatvoriť Admin Panel' : '⚙️ Admin Panel'}
+      {showAdminPanel ? '❌ Zatvoriť Admin Panel' : '⚙️ Admin Panel'}
     </button>
   </div>
 )}
@@ -557,7 +557,8 @@ if (new Date() >= new Date(match.kickoff_time)) {
           style={{
             border: '2px solid red',
             padding: '15px',
-            marginBottom: '20px'
+            marginBottom: '20px',
+            backgroundColor: '#eef4f882',
           }}
         >
           <h3>ADMIN PANEL</h3>
