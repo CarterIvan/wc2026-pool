@@ -84,6 +84,7 @@ Mexico: 'mx',
 Ecuador: 'ec',
 Panama: 'pa',
 Ghana: 'gh',
+Brazil: 'br',
 }
 
 
