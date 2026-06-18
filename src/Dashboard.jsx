@@ -64,7 +64,6 @@ const countryCodes = {
   Paraguay: 'py',
   Qatar: 'qa',
   Switzerland: 'ch',
-  Brazil: 'br',
   Marroco: 'ma',
   Haiti: 'ht',
   Scotland: 'gb-sct',
