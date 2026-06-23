@@ -90,23 +90,27 @@ function App() {
 
   return (
     <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        background:
-  'linear-gradient(135deg, #1a2980 0%, #26d0ce 100%)',
-        
-      }}
+     style={{
+  minHeight: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background:
+    'linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #06b6d4 100%)'
+}}
     >
       <div
-        style={{
-          width: '300px',
-          textAlign: 'center'
-          
-        }}
-      >
+  style={{
+    width: '380px',
+    textAlign: 'center',
+    background: 'rgba(255,255,255,0.12)',
+    backdropFilter: 'blur(15px)',
+    border: '1px solid rgba(255,255,255,0.2)',
+    borderRadius: '24px',
+    padding: '40px',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.2)'
+  }}
+>
 <div
   style={{
     fontSize: '60px',
@@ -119,14 +123,27 @@ function App() {
   🏆
 </div>
 
-       <h1
+<h1
   style={{
-    color: 'white'
+    color: 'white',
+    fontSize: '30px',
+    marginBottom: '10px',
+    letterSpacing: '2px'
   }}
 >
-  WC2026
+  WORLD CUP
 </h1>
-        
+        <p
+  style={{
+    color: 'rgba(255,255,255,0.8)',
+    marginTop: '0',
+    marginBottom: '25px',
+    fontSize: '14px',
+    letterSpacing: '1px'
+  }}
+>
+  2026
+</p>
 
         <input
           placeholder="Meno"
@@ -135,10 +152,14 @@ function App() {
             setName(e.target.value)
           }
           style={{
-            width: '100%',
-            padding: '10px',
-            fontSize: '16px'
-          }}
+  width: '100%',
+  padding: '14px 16px',
+  fontSize: '16px',
+  borderRadius: '12px',
+  border: 'none',
+  outline: 'none',
+  boxSizing: 'border-box'
+}}
         />
 
         <br />
@@ -154,11 +175,15 @@ function App() {
             )
             
           }
-          style={{
-            width: '100%',
-            padding: '10px',
-            fontSize: '16px'
-          }}
+        style={{
+  width: '100%',
+  padding: '14px 16px',
+  fontSize: '16px',
+  borderRadius: '12px',
+  border: 'none',
+  outline: 'none',
+  boxSizing: 'border-box'
+}}
         />
 
         <br />
@@ -166,21 +191,24 @@ function App() {
 
         <button
           onClick={login}
-          style={{
-            padding:
-              '10px 20px'
-          }}
+         style={{
+  padding: '14px 28px',
+  background: '#d4a017',
+  color: 'white',
+  border: 'none',
+  borderRadius: '12px',
+  fontWeight: '700',
+  cursor: 'pointer',
+  boxShadow: '0 6px 16px rgba(212,160,23,0.35)'
+}}
         >
           Login
         </button>
 
         <p>{message}</p>
-        <div
+       <div
   style={{
-    position: 'fixed',
-    bottom: '15px',
-    left: '50%',
-    transform: 'translateX(-50%)',
+    marginTop: '20px',
     color: 'rgba(255,255,255,0.6)',
     fontSize: '11px',
     letterSpacing: '1px'

@@ -36,6 +36,30 @@ const [lastMatchName, setLastMatchName] = useState('')
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState('')
 const [showAdminPanel, setShowAdminPanel] = useState(false)
+const getPlayerStats = (playerId) => {
+  let exact = 0
+  let winner = 0
+
+  predictions.forEach(pred => {
+    if (pred.player_id !== playerId) return
+
+    const match = matches.find(
+      m => m.id === pred.match_id
+    )
+
+    if (!match || !match.finished) return
+
+    if (pred.points === 3) {
+      exact++
+    }
+
+    if (pred.points === 1) {
+      winner++
+    }
+  })
+
+  return { exact, winner }
+}
 const countryCodes = {
   France: 'fr',
   Senegal: 'sn',
@@ -1397,6 +1421,47 @@ border: '1px solid #c5d8f2',
         </div>
       )
     })}
+    <div
+  style={{
+    marginTop: '20px',
+    paddingTop: '12px',
+    borderTop: '1px solid #d6d6d6'
+  }}
+>
+  <div
+    style={{
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: '10px'
+    }}
+  >
+    📊 Úspešnosť tipov
+  </div>
+
+  {players
+    .sort((a, b) => b.points - a.points)
+    .map(p => {
+      const stats = getPlayerStats(p.id)
+
+      return (
+        <div
+          key={p.id}
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: '6px',
+            fontSize: '14px'
+          }}
+        >
+          <span>{p.name}</span>
+
+          <span>
+            🎯 {stats.exact} &nbsp; 👍 {stats.winner}
+          </span>
+        </div>
+      )
+    })}
+</div>
 </div>
 </div>
 
