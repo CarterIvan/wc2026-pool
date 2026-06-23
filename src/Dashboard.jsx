@@ -1453,14 +1453,7 @@ border: '1px solid #c5d8f2',
             fontSize: '14px'
           }}
         >
-         <span
-  style={{
-    color: p.id === player.id ? '#1976d2' : '#555',
-    fontWeight: p.id === player.id ? 'bold' : 'normal'
-  }}
->
-  {p.name}
-</span>
+          <span>{p.name}</span>
 
           <span>
             🎯 {stats.exact} &nbsp; 👍 {stats.winner}
@@ -1502,17 +1495,17 @@ border: '1px solid #c5d8f2',
 
   borderLeft:
     myTip.points === 3
-      ? '20px solid #2e7d32'
+      ? '12px solid #2e7d32'
       : myTip.points === 1
-      ? '20px solid #d4a017'
-      : '20px solid #d9534f',
+      ? '12px solid #d4a017'
+      : '12px solid #d9534f',
 
   padding: '10px 5px',
   marginBottom: '12px',
 
   background: 'white',
 
-  borderRadius: '30px',
+  borderRadius: '40px',
 
   boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
 }}
