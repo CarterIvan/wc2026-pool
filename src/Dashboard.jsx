@@ -1453,7 +1453,14 @@ border: '1px solid #c5d8f2',
             fontSize: '14px'
           }}
         >
-          <span>{p.name}</span>
+          <span
+  style={{
+    color: p.id === player.id ? '#1976d2' : '#555',
+    fontWeight: p.id === player.id ? 'bold' : 'normal'
+  }}
+>
+  {p.name}
+</span>
 
           <span>
             🎯 {stats.exact} &nbsp; 👍 {stats.winner}
