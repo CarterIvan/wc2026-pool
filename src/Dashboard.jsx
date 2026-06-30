@@ -36,6 +36,7 @@ const [lastMatchName, setLastMatchName] = useState('')
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState('')
 const [showAdminPanel, setShowAdminPanel] = useState(false)
+const [openedLiveMatch, setOpenedLiveMatch] = useState(null)
 const getPlayerStats = (playerId) => {
   let exact = 0
   let winner = 0
