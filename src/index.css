@@ -109,3 +109,14 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+html {
+  color-scheme: light !important;
+  background: #fff;
+}
+
+body {
+  color-scheme: light !important;
+  background: #fff;
+  color: #000;
+}
