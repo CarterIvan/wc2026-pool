@@ -1107,7 +1107,7 @@ if (true)
         color: '#8a5a00',
         padding: '4px 12px',
         borderRadius: '20px',
-        fontSize: '14px',
+        fontSize: '15px',
         fontWeight: '700',
         marginBottom: '12px',
         textTransform: 'uppercase',
