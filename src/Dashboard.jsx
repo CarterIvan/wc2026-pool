@@ -61,6 +61,15 @@ const getPlayerStats = (playerId) => {
 
   return { exact, winner }
 }
+const stageIcons = {
+  'Skupinová fáza': '🏟️',
+  'Šestnásťfinále': '⚔️',
+  'Osemfinále': '⚔️',
+  'Štvrťfinále': '🏅',
+  'Semifinále': '🔥',
+  'Zápas o 3. miesto': '🥉',
+  'Finále': '👑'
+}
 const countryCodes = {
   France: 'fr',
   Senegal: 'sn',
@@ -1091,6 +1100,22 @@ if (true)
     overflow: 'hidden'
   }}
 >
+ <div
+      style={{
+        display: 'inline-block',
+        background: '#f7e5a0',
+        color: '#8a5a00',
+        padding: '4px 12px',
+        borderRadius: '20px',
+        fontSize: '14px',
+        fontWeight: '700',
+        marginBottom: '12px',
+        textTransform: 'uppercase',
+        letterSpacing: '1px'
+      }}
+    >
+     {stageIcons[match.stage] || '🏆'} {match.stage}
+    </div>
   {!myPredictions[match.id] && (
     <div
       style={{
